@@ -107,11 +107,12 @@ async def test_agent(resource_name: str) -> bool:
         print(f"\n🧪 Testing agent: {resource_name}")
         print("=" * 60)
 
-        # Test queries based on your customer service agent
         test_queries = [
-            "Hello, I'm looking for some tomato seeds for my garden.",
-            "What products do you have in the tools department?",
-            "Can you check what's in my cart?",
+            "Do you sell seeds?",
+            "What do you have in the vegetable seeds department?",
+            "Can you add 2 packets of tomato seeds to my cart?",
+            "Actually, remove 1 packet from my cart",
+            "What's in my cart now?",
         ]
 
         success_count = 0
@@ -138,7 +139,7 @@ async def test_agent(resource_name: str) -> bool:
             except Exception as e:
                 print(f"❌ Query failed: {e}")
 
-            time.sleep(2)  # Brief pause between queries
+            time.sleep(3)  # Pause between queries to allow conversation flow
 
         print(f"\n📊 Test Results: {success_count}/{len(test_queries)} queries successful")
 
