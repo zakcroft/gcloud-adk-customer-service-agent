@@ -89,6 +89,42 @@ Customer ──┬── Personal Info (Alex Johnson, #428765091)
    uv sync
    ```
 
+## Deployment
+
+Use the consolidated deployment script for all operations. You can use either the shell wrapper or call Python directly:
+
+### Option 1: Shell Wrapper (Recommended)
+```bash
+# Deploy the agent
+./deploy.sh --deploy
+
+# List all deployed agents
+./deploy.sh --list
+
+# Test a deployed agent
+./deploy.sh --test <resource_name>
+
+# Delete a deployed agent
+./deploy.sh --delete <resource_name>
+
+# Enable verbose logging
+./deploy.sh --deploy --verbose
+```
+
+### Option 2: Direct Python Call
+```bash
+# Activate environment and set Python path
+source .venv/bin/activate
+PYTHONPATH=. python deploy/deploy.py --deploy
+```
+
+### Available Commands
+- `--deploy`: Deploy the customer service agent to Vertex AI Agent Engine
+- `--list`: List all deployed agents in your project with details
+- `--test <resource_name>`: Test a deployed agent with sample customer queries
+- `--delete <resource_name>`: Delete a deployed agent
+- `--verbose`: Enable detailed logging for troubleshooting
+
 ## Key Files
 
 - `agent/agent.py` - Main agent configuration
