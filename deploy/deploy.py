@@ -120,17 +120,25 @@ async def test_agent(resource_name: str) -> bool:
             print("-" * 40)
 
             try:
+                response_received = False
                 async for event in remote_agent.async_stream_query(
                     user_id="u_456",
                     session_id=remote_session["id"],
-                    message="whats the weather in new york",
+                    message=query,  # Fixed: Use the actual query instead of hardcoded message
                 ):
                     print(event)
+                    response_received = True
+
+                if response_received:
+                    print("✅ Query completed successfully")
+                    success_count += 1
+                else:
+                    print("⚠️  No response received")
 
             except Exception as e:
                 print(f"❌ Query failed: {e}")
 
-            time.sleep(1)  # Brief pause between queries
+            time.sleep(2)  # Brief pause between queries
 
         print(f"\n📊 Test Results: {success_count}/{len(test_queries)} queries successful")
 
