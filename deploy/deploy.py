@@ -1,8 +1,8 @@
 import argparse
+import asyncio
 import logging
 import sys
 import time
-from typing import Optional
 
 import vertexai
 from vertexai import agent_engines
@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 configs = Config()
-STAGING_BUCKET = f"gs://{configs.CLOUD_PROJECT}-{configs.STAGING_BUCKET}"
+STAGING_BUCKET = f"gs://{configs.STAGING_BUCKET}"
 
 
 def init_vertexai():
@@ -92,13 +92,17 @@ def delete_agent(resource_name: str) -> bool:
         return False
 
 
-def test_agent(resource_name: str) -> bool:
+async def test_agent(resource_name: str) -> bool:
     """Test a deployed agent with sample queries."""
     logger.info(f"Testing agent: {resource_name}")
 
     try:
         # Get the agent instance
         remote_agent = agent_engines.get(resource_name=resource_name)
+
+
+        remote_session = await remote_agent.async_create_session(user_id="u_456")
+        print(remote_session)
 
         print(f"\n🧪 Testing agent: {resource_name}")
         print("=" * 60)
@@ -116,14 +120,12 @@ def test_agent(resource_name: str) -> bool:
             print("-" * 40)
 
             try:
-                # Execute the query
-                response = remote_agent.query(input=query)
-
-                if response and len(str(response).strip()) > 0:
-                    print(f"✅ Response received: {str(response)[:200]}...")
-                    success_count += 1
-                else:
-                    print("❌ Empty or invalid response")
+                async for event in remote_agent.async_stream_query(
+                    user_id="u_456",
+                    session_id=remote_session["id"],
+                    message="whats the weather in new york",
+                ):
+                    print(event)
 
             except Exception as e:
                 print(f"❌ Query failed: {e}")
@@ -257,7 +259,7 @@ Examples:
             delete_agent(args.delete)
 
         elif args.test:
-            test_agent(args.test)
+           asyncio.run(test_agent(args.test))
 
         elif args.list:
             list_agents()
