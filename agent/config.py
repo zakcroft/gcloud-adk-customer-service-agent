@@ -28,5 +28,7 @@ class Config(BaseSettings):
     app_name: str = "customer_services_app"
     CLOUD_PROJECT: str = Field(default="dev")
     CLOUD_LOCATION: str = Field(default="us-central1")
+    STAGING_BUCKET: str | None = Field(default="staging-bucket")
     GENAI_USE_VERTEXAI: str = Field(default="1")
     API_KEY: str | None = Field(default="")
+
