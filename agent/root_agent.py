@@ -23,7 +23,6 @@ logger = logging.getLogger(__name__)
 
 root_agent = Agent(
     model=configs.agent_settings.model,
-    global_instruction=GLOBAL_INSTRUCTION,
     instruction=INSTRUCTION,
     name=configs.agent_settings.name,
     tools=[
