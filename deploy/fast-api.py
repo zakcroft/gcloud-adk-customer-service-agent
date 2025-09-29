@@ -21,6 +21,17 @@ app: FastAPI = get_fast_api_app(
 app.title = "customer-services-agent"
 app.description = "API for interacting with the customer services Agent."
 
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint."""
+    return {
+        "status": "healthy",
+        "service": "customer-services-agent",
+        "version": "0.1.0"
+    }
+
+
 if __name__ == "__main__":
     import uvicorn
 

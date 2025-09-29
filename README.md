@@ -89,7 +89,49 @@ Customer ──┬── Personal Info (Alex Johnson, #428765091)
    uv sync
    ```
 
-## Deployment
+## Local Development
+
+### Running the FastAPI Server
+
+Start the local development server:
+
+```bash
+# Option 1: Using the convenience script (Recommended)
+./serve.sh
+
+# Option 2: Using uv run
+uv run serve
+
+# Option 3: Manual activation
+source .venv/bin/activate
+PYTHONPATH=. python deploy/fast-api.py
+```
+
+The server will start on `http://localhost:8080`:
+- 📖 **API Documentation**: http://localhost:8080/docs
+- 🔍 **Health Check**: http://localhost:8080/health
+- 🎯 **OpenAPI Spec**: http://localhost:8080/openapi.json
+
+### Testing the API
+
+```bash
+# Health check
+curl http://localhost:8080/health
+
+# List available agents
+curl http://localhost:8080/list-apps
+
+# Run a query (streaming)
+curl -X POST http://localhost:8080/run_sse \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appName": "root_agent",
+    "userMessage": "Do you sell seeds?",
+    "userId": "test-user-123"
+  }'
+```
+
+## Cloud Deployment
 
 Use the consolidated deployment script for all operations. You can use either the shell wrapper or call Python directly:
 
