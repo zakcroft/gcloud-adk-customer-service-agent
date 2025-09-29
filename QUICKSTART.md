@@ -65,23 +65,20 @@ curl -X POST http://localhost:8080/run_sse \
 
 ## 🛠️ Development Commands
 
-### Start Server (3 Options)
+### Start Server (2 Options)
 
 **Option 1: Shell Script (Recommended)**
 ```bash
 ./serve.sh
 ```
 
-**Option 2: Using uv**
-```bash
-uv run serve
-```
-
-**Option 3: Manual**
+**Option 2: Manual**
 ```bash
 source .venv/bin/activate
 PYTHONPATH=. python deploy/fast-api.py
 ```
+
+> **Note**: `PYTHONPATH=.` is required so Python can find the `agent` module from the project root.
 
 ### Run Tests
 ```bash

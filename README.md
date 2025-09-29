@@ -99,13 +99,12 @@ Start the local development server:
 # Option 1: Using the convenience script (Recommended)
 ./serve.sh
 
-# Option 2: Using uv run
-uv run serve
-
-# Option 3: Manual activation
+# Option 2: Manual activation
 source .venv/bin/activate
 PYTHONPATH=. python deploy/fast-api.py
 ```
+
+**Why `PYTHONPATH=.`?** This tells Python to look in the current directory for modules, allowing `deploy/fast-api.py` to import from the `agent/` directory.
 
 The server will start on `http://localhost:8080`:
 - 📖 **API Documentation**: http://localhost:8080/docs

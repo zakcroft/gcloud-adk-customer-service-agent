@@ -30,9 +30,11 @@ if [ ! -f ".venv/bin/uvicorn" ]; then
 fi
 
 echo -e "${GREEN}✓ Virtual environment found${NC}"
-echo -e "${GREEN}✓ Starting FastAPI server...${NC}\n"
+echo -e "${GREEN}✓ Starting FastAPI server...${NC}"
+echo -e "${GREEN}📖 API Documentation: http://localhost:8080/docs${NC}"
+echo -e "${GREEN}🔍 Health Check: http://localhost:8080/health${NC}\n"
 
-# Activate virtual environment and start the server
+# Activate virtual environment and start the server with PYTHONPATH set
 source .venv/bin/activate
 PYTHONPATH=. python deploy/fast-api.py
 
