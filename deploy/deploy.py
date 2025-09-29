@@ -74,7 +74,7 @@ def delete_agent(resource_name: str) -> bool:
         agent_engines.get(resource_name=resource_name)
 
         # Delete the agent
-        agent_engines.delete(resource_name=resource_name)
+        agent_engines.delete(resource_name=resource_name, force=True)
 
         logger.info(f"Agent {resource_name} deleted successfully")
         print(f"\n✅ Agent deleted successfully!")
