@@ -12,14 +12,14 @@ A customer service AI agent for Cymbal Home & Garden, built with Google ADK.
 
 ┌─────────────────┐
 │   root_agent    │ ← Main Agent (Gemini 2.5 Flash)
-│  "Project Pro"  │
+│  "Project Pro"  │   Located in: agents/root_agent/
 └─────────┬───────┘
           │
           ├── GLOBAL_INSTRUCTION (Customer Profile: Alex Johnson)
           ├── INSTRUCTION (Core capabilities & constraints)
           │
           └── TOOLS ──┬── check_product_list
-                      ├── get_product_recommendations  
+                      ├── get_product_recommendations
                       ├── check_product_availability
                       ├── access_cart_information
                       └── modify_cart
@@ -168,8 +168,8 @@ PYTHONPATH=. python deploy/deploy.py --deploy
 
 ## Key Files
 
-- `agent/agent.py` - Main agent configuration
-- `agent/prompts.py` - Agent instructions and personality
-- `agent/tools/tools.py` - Business logic tools
-- `agent/entities/customer.py` - Customer data models
-- `agent/shared_libraries/callbacks.py` - Lifecycle callbacks
+- `agents/root_agent/agent.py` - Main agent configuration
+- `agents/root_agent/prompts.py` - Agent instructions and personality
+- `agents/root_agent/tools/tools.py` - Business logic tools
+- `agents/root_agent/entities/customer.py` - Customer data models
+- `agents/root_agent/shared_libraries/callbacks.py` - Lifecycle callbacks

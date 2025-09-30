@@ -8,8 +8,8 @@ import vertexai
 from vertexai import agent_engines
 from google.api_core.exceptions import NotFound, GoogleAPIError
 
-from agent.config import Config
-from agent.root_agent import root_agent
+from agents.root_agent.config import Config
+from agents.root_agent.agent import root_agent
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -47,7 +47,7 @@ def deploy_agent() -> str:
                 "pydantic-settings>=2.10.1",
                 "cloudpickle>=3.1.1",
             ],
-            extra_packages=['./agent'],
+            extra_packages=['./agents/root_agent'],
         )
 
         logger.info("Deployment finished successfully!")

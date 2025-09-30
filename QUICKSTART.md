@@ -97,13 +97,15 @@ pytest
 
 ```
 customer-services/
-├── agent/                      # Agent implementation
-│   ├── root_agent.py          # Main agent definition
-│   ├── prompts.py             # Instructions & personality
-│   ├── config.py              # Configuration
-│   ├── tools/                 # Business logic tools
-│   ├── entities/              # Data models
-│   └── shared_libraries/      # Callbacks & utilities
+├── agents/                     # Agents directory (ADK standard)
+│   └── root_agent/            # Root agent implementation
+│       ├── __init__.py        # Agent module init
+│       ├── agent.py           # Main agent definition (root_agent)
+│       ├── prompts.py         # Instructions & personality
+│       ├── config.py          # Configuration
+│       ├── tools/             # Business logic tools
+│       ├── entities/          # Data models
+│       └── shared_libraries/  # Callbacks & utilities
 ├── deploy/                     # Deployment scripts
 │   ├── fast-api.py            # FastAPI server
 │   └── deploy.py              # Cloud deployment
@@ -111,6 +113,8 @@ customer-services/
 ├── deploy.sh                   # Cloud deployment wrapper
 └── pyproject.toml             # Dependencies
 ```
+
+**Note**: The `agents/` directory can contain multiple agents. Each agent lives in its own subdirectory with an `agent.py` file that defines `root_agent`.
 
 ---
 
@@ -166,6 +170,9 @@ kill -9 $(lsof -t -i:8080)
 ```bash
 # Make sure PYTHONPATH is set
 PYTHONPATH=. python deploy/fast-api.py
+
+# Or use the serve.sh script which handles this automatically
+./serve.sh
 ```
 
 ### Authentication errors
@@ -183,8 +190,8 @@ gcloud config get-value project
 
 1. **Explore the API**: Open http://localhost:8080/docs
 2. **Read the Architecture**: See `README.md` for system design
-3. **Add Custom Tools**: Edit `agent/tools/tools.py`
-4. **Modify Instructions**: Edit `agent/prompts.py`
+3. **Add Custom Tools**: Edit `agents/root_agent/tools/tools.py`
+4. **Modify Instructions**: Edit `agents/root_agent/prompts.py`
 5. **Deploy to Cloud**: Run `./deploy.sh --deploy`
 
 ---
@@ -194,14 +201,4 @@ gcloud config get-value project
 - **ADK Documentation**: https://cloud.google.com/vertex-ai/docs/adk
 - **FastAPI Docs**: https://fastapi.tiangolo.com/
 - **Vertex AI**: https://cloud.google.com/vertex-ai
-
----
-
-## 💡 Pro Tips
-
-1. **Use the Swagger UI** at `/docs` for interactive testing
-2. **Check logs** in the terminal where the server is running
-3. **Use different userIds** to test session management
-4. **Enable verbose logging** with `--verbose` flag for debugging
-5. **Test locally first** before deploying to cloud
 
