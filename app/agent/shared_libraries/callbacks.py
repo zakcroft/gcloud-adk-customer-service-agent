@@ -24,7 +24,7 @@ from google.adk.tools import BaseTool
 from google.adk.sessions.state import State
 from google.adk.tools.tool_context import ToolContext
 from jsonschema import ValidationError
-from agents.entities.customer import Customer
+from ..entities.customer import Customer
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)

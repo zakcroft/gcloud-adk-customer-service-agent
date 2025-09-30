@@ -4,12 +4,12 @@ from google.adk.cli.fast_api import get_fast_api_app
 from fastapi import FastAPI
 
 DEPLOY_DIR = os.path.dirname(os.path.abspath(__file__))
-AGENTS_DIR = os.path.join(os.path.dirname(DEPLOY_DIR), "agents")
+AGENT_DIR = os.path.join(os.path.dirname(DEPLOY_DIR), "app")
 
-print('AGENTS_DIR===', AGENTS_DIR)
+print('AGENT_DIR===', AGENT_DIR)
 
 app: FastAPI = get_fast_api_app(
-    agents_dir=AGENTS_DIR,
+    agents_dir=AGENT_DIR,
     web=True,
     trace_to_cloud=True,
 )
