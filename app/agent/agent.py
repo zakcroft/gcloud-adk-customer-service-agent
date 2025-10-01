@@ -12,7 +12,6 @@ from .tools.tools import (
     modify_cart,
 )
 
-
 warnings.filterwarnings("ignore", category=UserWarning, module=".*pydantic.*")
 
 configs = Config()
