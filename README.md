@@ -91,6 +91,18 @@ Customer ──┬── Personal Info (Alex Johnson, #428765091)
 
 ## Local Development
 
+### Code Formatting
+
+Format Python code with Ruff:
+
+```bash
+# Format all Python files
+ruff format app/ eval/ deploy/
+
+# Check and auto-fix linting issues
+ruff check app/ eval/ deploy/ --fix
+```
+
 ### Running the FastAPI Server
 
 Start the local development server:

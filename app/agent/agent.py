@@ -2,7 +2,7 @@ import logging
 import warnings
 from google.adk import Agent
 from .config import Config
-from .prompts import GLOBAL_INSTRUCTION, INSTRUCTION
+from .prompts import INSTRUCTION
 from .shared_libraries.callbacks import before_agent
 from .tools.tools import (
     check_product_list,

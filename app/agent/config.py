@@ -31,4 +31,3 @@ class Config(BaseSettings):
     STAGING_BUCKET: str | None = Field(default="staging-bucket")
     GENAI_USE_VERTEXAI: str = Field(default="1")
     API_KEY: str | None = Field(default="")
-

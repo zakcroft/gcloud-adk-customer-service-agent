@@ -41,23 +41,6 @@ A comprehensive test that covers the complete customer service flow:
 pytest eval/test_eval.py::test_eval_full_conversation -v
 ```
 
-### `eval_data/cart_management.test.json`
-A focused test for cart operations (shorter to avoid rate limits):
-
-1. **Greeting** - Basic welcome
-2. **Add to Cart** - Add 2 sunflower seed packets
-3. **Check Cart** - Verify cart contents
-4. **Remove Item** - Remove tomato seeds
-
-**Tools Tested:**
-- `modify_cart` - Add and remove items
-- `access_cart_information` - View cart
-
-**Usage:**
-```bash
-pytest eval/test_eval.py::test_eval_cart_management -v
-```
-
 ## Running All Tests
 
 ```bash
@@ -78,6 +61,6 @@ The Vertex AI API has rate limits. If you see `429 RESOURCE_EXHAUSTED` errors:
 # Run one at a time with delays
 pytest eval/test_eval.py::test_eval_simple -v
 sleep 30
-pytest eval/test_eval.py::test_eval_cart_management -v
+pytest eval/test_eval.py::test_eval_full_conversation -v
 ```
 

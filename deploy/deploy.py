@@ -6,12 +6,14 @@ import time
 
 import vertexai
 from vertexai import agent_engines
-from google.api_core.exceptions import NotFound, GoogleAPIError
+from google.api_core.exceptions import NotFound
 
 from app.agent.config import Config
 from app.agent.agent import root_agent
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 logger = logging.getLogger(__name__)
 
 configs = Config()
@@ -47,12 +49,12 @@ def deploy_agent() -> str:
                 "pydantic-settings>=2.10.1",
                 "cloudpickle>=3.1.1",
             ],
-            extra_packages=['./app/agent'],
+            extra_packages=["./app/agent"],
         )
 
         logger.info("Deployment finished successfully!")
         logger.info(f"Resource Name: {remote_app.resource_name}")
-        print(f"\n✅ Deployment successful!")
+        print("\n✅ Deployment successful!")
         print(f"📋 Resource Name: {remote_app.resource_name}")
         print(f"🔗 Project: {configs.CLOUD_PROJECT}")
         print(f"📍 Location: {configs.CLOUD_LOCATION}")
@@ -77,7 +79,7 @@ def delete_agent(resource_name: str) -> bool:
         agent_engines.delete(resource_name=resource_name, force=True)
 
         logger.info(f"Agent {resource_name} deleted successfully")
-        print(f"\n✅ Agent deleted successfully!")
+        print("\n✅ Agent deleted successfully!")
         print(f"📋 Resource Name: {resource_name}")
         return True
 
@@ -99,7 +101,6 @@ async def test_agent(resource_name: str) -> bool:
     try:
         # Get the agent instance
         remote_agent = agent_engines.get(resource_name=resource_name)
-
 
         remote_session = await remote_agent.async_create_session(user_id="u_456")
         print(remote_session)
@@ -141,7 +142,9 @@ async def test_agent(resource_name: str) -> bool:
 
             time.sleep(3)  # Pause between queries to allow conversation flow
 
-        print(f"\n📊 Test Results: {success_count}/{len(test_queries)} queries successful")
+        print(
+            f"\n📊 Test Results: {success_count}/{len(test_queries)} queries successful"
+        )
 
         if success_count == len(test_queries):
             print("🎉 All tests passed!")
@@ -189,18 +192,22 @@ def list_agents():
             print(f"   🔄 Updated: {agent.update_time}")
 
             # Show description if available
-            if hasattr(agent, 'description') and agent.description:
+            if hasattr(agent, "description") and agent.description:
                 print(f"   📝 Description: {agent.description}")
 
             print()
 
         print("💡 Test an agent using: python deploy/deploy.py --test <resource_name>")
-        print("💡 Delete an agent using: python deploy/deploy.py --delete <resource_name>")
+        print(
+            "💡 Delete an agent using: python deploy/deploy.py --delete <resource_name>"
+        )
 
     except Exception as e:
         logger.error(f"Failed to list agents: {e}")
         print(f"\n❌ Failed to list agents: {e}")
-        print("💡 Make sure you have the correct permissions and project configuration.")
+        print(
+            "💡 Make sure you have the correct permissions and project configuration."
+        )
 
 
 def main():
@@ -213,40 +220,34 @@ Examples:
   python deploy/deploy.py --delete <resource_name>    # Delete a deployed agent
   python deploy/deploy.py --test <resource_name>      # Test a deployed agent
   python deploy/deploy.py --list                      # List deployed agents
-        """
+        """,
     )
 
     # Create mutually exclusive group for main actions
     action_group = parser.add_mutually_exclusive_group(required=True)
 
     action_group.add_argument(
-        "--deploy",
-        action="store_true",
-        help="Deploy the customer service agent"
+        "--deploy", action="store_true", help="Deploy the customer service agent"
     )
 
     action_group.add_argument(
         "--delete",
         metavar="RESOURCE_NAME",
-        help="Delete a deployed agent (provide resource name)"
+        help="Delete a deployed agent (provide resource name)",
     )
 
     action_group.add_argument(
         "--test",
         metavar="RESOURCE_NAME",
-        help="Test a deployed agent (provide resource name)"
+        help="Test a deployed agent (provide resource name)",
     )
 
     action_group.add_argument(
-        "--list",
-        action="store_true",
-        help="List all deployed agents"
+        "--list", action="store_true", help="List all deployed agents"
     )
 
     parser.add_argument(
-        "--verbose", "-v",
-        action="store_true",
-        help="Enable verbose logging"
+        "--verbose", "-v", action="store_true", help="Enable verbose logging"
     )
 
     args = parser.parse_args()
@@ -268,7 +269,7 @@ Examples:
             delete_agent(args.delete)
 
         elif args.test:
-           asyncio.run(test_agent(args.test))
+            asyncio.run(test_agent(args.test))
 
         elif args.list:
             list_agents()

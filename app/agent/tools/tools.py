@@ -3,7 +3,6 @@ from typing import Optional
 
 logger = logging.getLogger(__name__)
 
-
 def check_product_list(department: Optional[str] = None) -> dict:
     """Get a list of products by department or all products.
 
@@ -42,7 +41,6 @@ def check_product_list(department: Optional[str] = None) -> dict:
             "in_stock": True,
             "stock_quantity": 12,
         },
-
         # Seeds Department
         {
             "product_id": "seed-101",
@@ -71,7 +69,6 @@ def check_product_list(department: Optional[str] = None) -> dict:
             "in_stock": True,
             "stock_quantity": 67,
         },
-
         # Decor Department
         {
             "product_id": "decor-201",
@@ -100,7 +97,6 @@ def check_product_list(department: Optional[str] = None) -> dict:
             "in_stock": True,
             "stock_quantity": 18,
         },
-
         # Irrigation Department
         {
             "product_id": "irrig-301",
@@ -129,19 +125,15 @@ def check_product_list(department: Optional[str] = None) -> dict:
             return {
                 "error": f"No products found for department '{department}'",
                 "available_departments": ["tools", "seeds", "decor", "irrigation"],
-                "products": []
+                "products": [],
             }
         return {
             "department": department,
             "total_products": len(filtered),
-            "products": filtered
+            "products": filtered,
         }
 
-    return {
-        "department": "all",
-        "total_products": len(products),
-        "products": products
-    }
+    return {"department": "all", "total_products": len(products), "products": products}
 
 
 def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
@@ -174,7 +166,7 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                     "price": 14.99,
                     "in_stock": True,
                     "stock_quantity": 42,
-                    "category": "soil"
+                    "category": "soil",
                 },
                 {
                     "product_id": "fert-789",
@@ -183,7 +175,7 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                     "price": 9.99,
                     "in_stock": True,
                     "stock_quantity": 67,
-                    "category": "fertilizer"
+                    "category": "fertilizer",
                 },
                 {
                     "product_id": "tool-004",
@@ -192,8 +184,8 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                     "price": 16.99,
                     "in_stock": True,
                     "stock_quantity": 23,
-                    "category": "tools"
-                }
+                    "category": "tools",
+                },
             ]
         },
         "tomatoes": {
@@ -205,7 +197,7 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                     "price": 12.99,
                     "in_stock": True,
                     "stock_quantity": 38,
-                    "category": "soil"
+                    "category": "soil",
                 },
                 {
                     "product_id": "fert-456",
@@ -214,7 +206,7 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                     "price": 11.99,
                     "in_stock": True,
                     "stock_quantity": 45,
-                    "category": "fertilizer"
+                    "category": "fertilizer",
                 },
                 {
                     "product_id": "supp-101",
@@ -223,8 +215,8 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                     "price": 24.99,
                     "in_stock": True,
                     "stock_quantity": 19,
-                    "category": "support"
-                }
+                    "category": "support",
+                },
             ]
         },
         "sunflowers": {
@@ -236,7 +228,7 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                     "price": 10.99,
                     "in_stock": True,
                     "stock_quantity": 56,
-                    "category": "soil"
+                    "category": "soil",
                 },
                 {
                     "product_id": "fert-321",
@@ -245,10 +237,10 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                     "price": 13.99,
                     "in_stock": True,
                     "stock_quantity": 31,
-                    "category": "fertilizer"
-                }
+                    "category": "fertilizer",
+                },
             ]
-        }
+        },
     }
 
     # Check for specific plant type matches
@@ -289,7 +281,7 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                 "price": 10.99,
                 "in_stock": True,
                 "stock_quantity": 56,
-                "category": "soil"
+                "category": "soil",
             },
             {
                 "product_id": "fert-general",
@@ -298,11 +290,11 @@ def get_product_recommendations(plant_type: str, customer_id: str) -> dict:
                 "price": 8.99,
                 "in_stock": True,
                 "stock_quantity": 73,
-                "category": "fertilizer"
-            }
+                "category": "fertilizer",
+            },
         ],
         "total_recommendations": 2,
-        "note": "General gardening recommendations - consider providing more specific plant information for better suggestions"
+        "note": "General gardening recommendations - consider providing more specific plant information for better suggestions",
     }
 
     return general_recommendations
@@ -338,7 +330,6 @@ def check_product_availability(product_id: str, store_id: str) -> dict:
         "decor-203": {"quantity": 18, "reserved": 2, "available": 16},
         "irrig-301": {"quantity": 28, "reserved": 3, "available": 25},
         "irrig-302": {"quantity": 15, "reserved": 1, "available": 14},
-
         # From recommendations
         "soil-456": {"quantity": 42, "reserved": 2, "available": 40},
         "fert-789": {"quantity": 67, "reserved": 5, "available": 62},
@@ -356,7 +347,7 @@ def check_product_availability(product_id: str, store_id: str) -> dict:
             "available": False,
             "error": f"Product ID '{product_id}' not found in inventory",
             "product_id": product_id,
-            "store": store_id
+            "store": store_id,
         }
 
     stock_info = inventory[product_id]
@@ -381,12 +372,13 @@ def check_product_availability(product_id: str, store_id: str) -> dict:
         "status": status,
         "store": store_id,
         "product_id": product_id,
-        "message": f"{'Available' if available else 'Out of stock'} at {store_id}"
+        "message": f"{'Available' if available else 'Out of stock'} at {store_id}",
     }
 
 
 # Global cart state for simulation (in production, this would be in a database)
 _CART_STATE = {}
+
 
 def access_cart_information(customer_id: str) -> dict:
     """Retrieves the current cart contents for a customer.
@@ -408,7 +400,7 @@ def access_cart_information(customer_id: str) -> dict:
                 "description": "Versatile potting soil suitable for most plants.",
                 "quantity": 2,
                 "unit_price": 10.99,
-                "department": "soil"
+                "department": "soil",
             },
             {
                 "product_id": "seed-101",
@@ -416,8 +408,8 @@ def access_cart_information(customer_id: str) -> dict:
                 "description": "Heirloom cherry tomato seeds for sweet, juicy fruits.",
                 "quantity": 1,
                 "unit_price": 3.99,
-                "department": "seeds"
-            }
+                "department": "seeds",
+            },
         ]
 
     # Get current cart items
@@ -442,7 +434,7 @@ def access_cart_information(customer_id: str) -> dict:
         "tax": tax,
         "total": total,
         "currency": "GBP",
-        "last_updated": "2024-01-15T10:30:00Z"
+        "last_updated": "2024-01-15T10:30:00Z",
     }
 
     return cart_response
@@ -470,23 +462,91 @@ def modify_cart(
         "tool-001": {"name": "Hand Trowel", "price": 12.99, "department": "tools"},
         "tool-002": {"name": "Pruning Shears", "price": 24.99, "department": "tools"},
         "tool-003": {"name": "Garden Spade", "price": 34.99, "department": "tools"},
-        "seed-101": {"name": "Tomato Seeds - Cherry", "price": 3.99, "department": "seeds"},
-        "seed-102": {"name": "Sunflower Seeds - Giant", "price": 4.99, "department": "seeds"},
-        "seed-103": {"name": "Petunia Seeds - Mixed Colors", "price": 5.99, "department": "seeds"},
-        "decor-201": {"name": "Terracotta Planter - Large", "price": 18.99, "department": "decor"},
-        "decor-202": {"name": "Solar Garden Lantern", "price": 29.99, "department": "decor"},
-        "decor-203": {"name": "Garden Stepping Stones", "price": 39.99, "department": "decor"},
-        "irrig-301": {"name": "Soaker Hose - 25ft", "price": 19.99, "department": "irrigation"},
-        "irrig-302": {"name": "Copper Watering Can", "price": 42.99, "department": "irrigation"},
-        "soil-456": {"name": "Bloom Booster Potting Mix", "price": 14.99, "department": "soil"},
-        "fert-789": {"name": "Flower Power Fertilizer", "price": 9.99, "department": "fertilizer"},
-        "tool-004": {"name": "Deadheading Snips", "price": 16.99, "department": "tools"},
-        "soil-789": {"name": "Vegetable Garden Soil", "price": 12.99, "department": "soil"},
-        "fert-456": {"name": "Tomato & Vegetable Fertilizer", "price": 11.99, "department": "fertilizer"},
-        "supp-101": {"name": "Tomato Cages - Set of 3", "price": 24.99, "department": "support"},
-        "soil-123": {"name": "All-Purpose Garden Soil", "price": 10.99, "department": "soil"},
-        "fert-321": {"name": "High Nitrogen Fertilizer", "price": 13.99, "department": "fertilizer"},
-        "fert-general": {"name": "General Purpose Plant Food", "price": 8.99, "department": "fertilizer"}
+        "seed-101": {
+            "name": "Tomato Seeds - Cherry",
+            "price": 3.99,
+            "department": "seeds",
+        },
+        "seed-102": {
+            "name": "Sunflower Seeds - Giant",
+            "price": 4.99,
+            "department": "seeds",
+        },
+        "seed-103": {
+            "name": "Petunia Seeds - Mixed Colors",
+            "price": 5.99,
+            "department": "seeds",
+        },
+        "decor-201": {
+            "name": "Terracotta Planter - Large",
+            "price": 18.99,
+            "department": "decor",
+        },
+        "decor-202": {
+            "name": "Solar Garden Lantern",
+            "price": 29.99,
+            "department": "decor",
+        },
+        "decor-203": {
+            "name": "Garden Stepping Stones",
+            "price": 39.99,
+            "department": "decor",
+        },
+        "irrig-301": {
+            "name": "Soaker Hose - 25ft",
+            "price": 19.99,
+            "department": "irrigation",
+        },
+        "irrig-302": {
+            "name": "Copper Watering Can",
+            "price": 42.99,
+            "department": "irrigation",
+        },
+        "soil-456": {
+            "name": "Bloom Booster Potting Mix",
+            "price": 14.99,
+            "department": "soil",
+        },
+        "fert-789": {
+            "name": "Flower Power Fertilizer",
+            "price": 9.99,
+            "department": "fertilizer",
+        },
+        "tool-004": {
+            "name": "Deadheading Snips",
+            "price": 16.99,
+            "department": "tools",
+        },
+        "soil-789": {
+            "name": "Vegetable Garden Soil",
+            "price": 12.99,
+            "department": "soil",
+        },
+        "fert-456": {
+            "name": "Tomato & Vegetable Fertilizer",
+            "price": 11.99,
+            "department": "fertilizer",
+        },
+        "supp-101": {
+            "name": "Tomato Cages - Set of 3",
+            "price": 24.99,
+            "department": "support",
+        },
+        "soil-123": {
+            "name": "All-Purpose Garden Soil",
+            "price": 10.99,
+            "department": "soil",
+        },
+        "fert-321": {
+            "name": "High Nitrogen Fertilizer",
+            "price": 13.99,
+            "department": "fertilizer",
+        },
+        "fert-general": {
+            "name": "General Purpose Plant Food",
+            "price": 8.99,
+            "department": "fertilizer",
+        },
     }
 
     # Initialize cart if it doesn't exist
@@ -525,19 +585,23 @@ def modify_cart(
         if cart_item["quantity"] <= quantity_to_remove:
             # Remove entire item
             current_cart.remove(cart_item)
-            removed_items.append({
-                "product_id": product_id,
-                "quantity": cart_item["quantity"],
-                "name": cart_item["name"]
-            })
+            removed_items.append(
+                {
+                    "product_id": product_id,
+                    "quantity": cart_item["quantity"],
+                    "name": cart_item["name"],
+                }
+            )
         else:
             # Reduce quantity
             cart_item["quantity"] -= quantity_to_remove
-            removed_items.append({
-                "product_id": product_id,
-                "quantity": quantity_to_remove,
-                "name": cart_item["name"]
-            })
+            removed_items.append(
+                {
+                    "product_id": product_id,
+                    "quantity": quantity_to_remove,
+                    "name": cart_item["name"],
+                }
+            )
 
     # Process additions
     for item in items_to_add:
@@ -569,13 +633,15 @@ def modify_cart(
         if existing_item:
             # Update quantity
             existing_item["quantity"] += quantity
-            added_items.append({
-                "product_id": product_id,
-                "quantity": quantity,
-                "unit_price": product_info["price"],
-                "total_price": product_info["price"] * quantity,
-                "name": product_info["name"]
-            })
+            added_items.append(
+                {
+                    "product_id": product_id,
+                    "quantity": quantity,
+                    "unit_price": product_info["price"],
+                    "total_price": product_info["price"] * quantity,
+                    "name": product_info["name"],
+                }
+            )
         else:
             # Add new item
             new_cart_item = {
@@ -584,16 +650,18 @@ def modify_cart(
                 "description": f"{product_info['name']} from {product_info['department']} department",
                 "quantity": quantity,
                 "unit_price": product_info["price"],
-                "department": product_info["department"]
+                "department": product_info["department"],
             }
             current_cart.append(new_cart_item)
-            added_items.append({
-                "product_id": product_id,
-                "quantity": quantity,
-                "unit_price": product_info["price"],
-                "total_price": product_info["price"] * quantity,
-                "name": product_info["name"]
-            })
+            added_items.append(
+                {
+                    "product_id": product_id,
+                    "quantity": quantity,
+                    "unit_price": product_info["price"],
+                    "total_price": product_info["price"] * quantity,
+                    "name": product_info["name"],
+                }
+            )
 
     # Calculate new totals
     subtotal = sum(item["quantity"] * item["unit_price"] for item in current_cart)
@@ -607,7 +675,7 @@ def modify_cart(
             "items_added": added_items,
             "items_removed": removed_items,
             "total_added": len(added_items),
-            "total_removed": len(removed_items)
+            "total_removed": len(removed_items),
         },
         "cart_summary": {
             "subtotal": subtotal,
@@ -615,10 +683,10 @@ def modify_cart(
             "total": total,
             "currency": "GBP",
             "item_count": sum(item["quantity"] for item in current_cart),
-            "unique_items": len(current_cart)
+            "unique_items": len(current_cart),
         },
         "message": f"Cart updated: {len(added_items)} items added, {len(removed_items)} items removed",
-        "errors": errors if errors else None
+        "errors": errors if errors else None,
     }
 
     if errors:
