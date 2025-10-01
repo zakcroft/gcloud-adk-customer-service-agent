@@ -3,6 +3,7 @@ from typing import Optional
 
 logger = logging.getLogger(__name__)
 
+
 def check_product_list(department: Optional[str] = None) -> dict:
     """Get a list of products by department or all products.
 
