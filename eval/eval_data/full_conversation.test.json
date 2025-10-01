@@ -1,0 +1,497 @@
+{
+  "eval_set_id": "full-conversation-flow-v1",
+  "name": "Full Customer Service Conversation Flow",
+  "description": "Tests complete conversation flow: greeting, product inquiry, department browsing, cart management, and checkout",
+  "eval_cases": [
+    {
+      "eval_id": "full-conversation-001",
+      "conversation": [
+        {
+          "invocation_id": "greeting-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Hello!"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Hello! Welcome to Cymbal Home & Garden. I'm Project Pro, your AI assistant. How can I help you today?"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773584,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "product-inquiry-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Do you sell sunflower seeds?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Yes, we do sell sunflower seeds! We have Giant Sunflower Seeds available."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "department": "seeds"
+                },
+                "name": "check_product_list"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773665,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "department-inquiry-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "What other seeds do you have?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "We have several seed varieties available including Tomato Seeds - Cherry, Sunflower Seeds - Giant, and Petunia Seeds - Mixed Colors."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "department": "seeds"
+                },
+                "name": "check_product_list"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773719,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "add-to-cart-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Can you add 2 packets of the sunflower seeds to my cart?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "I've added 2 packets of Sunflower Seeds - Giant to your cart."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "customer_id": "123",
+                  "items_to_add": [
+                    {
+                      "product_id": "seed-102",
+                      "quantity": 2
+                    }
+                  ],
+                  "items_to_remove": []
+                },
+                "name": "modify_cart"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.7737632,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "check-cart-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "What's in my cart now?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Your cart contains All-Purpose Garden Soil, Tomato Seeds - Cherry, and Sunflower Seeds - Giant."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "customer_id": "123"
+                },
+                "name": "access_cart_information"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773807,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "add-more-items-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Add one hand trowel too please"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "I've added one Hand Trowel to your cart."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "customer_id": "123",
+                  "items_to_add": [
+                    {
+                      "product_id": "tool-001",
+                      "quantity": 1
+                    }
+                  ],
+                  "items_to_remove": []
+                },
+                "name": "modify_cart"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773847,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "remove-from-cart-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Actually, remove the tomato seeds from my cart"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "I've removed the Tomato Seeds - Cherry from your cart."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "customer_id": "123",
+                  "items_to_add": [],
+                  "items_to_remove": [
+                    {
+                      "product_id": "seed-101"
+                    }
+                  ]
+                },
+                "name": "modify_cart"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773891,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "verify-cart-final-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Show me my final cart before I checkout"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Your cart contains: All-Purpose Garden Soil (2 units), Sunflower Seeds - Giant (2 units), and Hand Trowel (1 unit)."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "customer_id": "123"
+                },
+                "name": "access_cart_information"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773977,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "goodbye-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Perfect, thanks!"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "You're welcome! Thanks for shopping at Cymbal Home & Garden. Have a great day!"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.774057,
+          "rubrics": null,
+          "app_details": null
+        }
+      ],
+      "session_input": null,
+      "creation_timestamp": 1759303635.774064,
+      "rubrics": null
+    }
+  ],
+  "creation_timestamp": 1759303635.774074
+}

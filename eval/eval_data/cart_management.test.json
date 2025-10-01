@@ -1,0 +1,234 @@
+{
+  "eval_set_id": "cart-management-v1",
+  "name": "Cart Management Test",
+  "description": "Tests cart operations: add items, check cart, remove items",
+  "eval_cases": [
+    {
+      "eval_id": "cart-management-001",
+      "conversation": [
+        {
+          "invocation_id": "greeting-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Hi"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Hello! Welcome to Cymbal Home & Garden."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773584,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "add-to-cart-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Add 2 sunflower seed packets to my cart"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "I've added 2 packets of Sunflower Seeds to your cart."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "customer_id": "123",
+                  "items_to_add": [
+                    {
+                      "product_id": "seed-102",
+                      "quantity": 2
+                    }
+                  ],
+                  "items_to_remove": []
+                },
+                "name": "modify_cart"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.7737632,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "check-cart-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "What's in my cart?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Your cart contains items including Sunflower Seeds."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "customer_id": "123"
+                },
+                "name": "access_cart_information"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773807,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "remove-from-cart-001",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Remove the tomato seeds"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "I've removed the Tomato Seeds from your cart."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "customer_id": "123",
+                  "items_to_add": [],
+                  "items_to_remove": [
+                    {
+                      "product_id": "seed-101"
+                    }
+                  ]
+                },
+                "name": "modify_cart"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303635.773891,
+          "rubrics": null,
+          "app_details": null
+        }
+      ],
+      "session_input": null,
+      "creation_timestamp": 1759303635.774064,
+      "rubrics": null
+    }
+  ],
+  "creation_timestamp": 1759303635.774074
+}
+

@@ -5,15 +5,17 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "google-adk>=1.15",
+    "google-adk[eval]>=1.15",
     "google-cloud-aiplatform>=1.114.0",
     "pydantic>=2.11.9",
     "pydantic-settings>=2.10.1",
-    "pytest>=8.4.2",
     "cloudpickle>=3.1.1",
     "uvicorn>=0.34.0",
-    "fastapi>=0.118.0",
+    "fastapi>=0.118.0"
 ]
 
 [dependency-groups]
-dev = []
+dev = [
+    "pytest>=8.4.2",
+    "pytest-asyncio>=1.2.0",
+]

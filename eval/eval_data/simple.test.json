@@ -1,0 +1,114 @@
+{
+  "eval_set_id": "simple-cart-check-v1",
+  "name": "Simple Cart Check Test",
+  "description": "Basic test for greeting and cart information retrieval",
+  "eval_cases": [
+    {
+      "eval_id": "simple-cart-001",
+      "conversation": [
+        {
+          "invocation_id": "c833f111-32e7-4de7-bde0-4889bac820ab",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "hi,"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "Hi there! Welcome back to Cymbal Home & Garden! I see you're a returning customer. How can I help you make your home and garden even better today"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303525.0663512,
+          "rubrics": null,
+          "app_details": null
+        },
+        {
+          "invocation_id": "edc5dbd9-f574-4e8b-a468-314111087fc6",
+          "user_content": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "tell me what is in my cart?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "video_metadata": null,
+                "thought": null,
+                "inline_data": null,
+                "file_data": null,
+                "thought_signature": null,
+                "function_call": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "function_response": null,
+                "text": "you have one bag of Standard Potting Soil and one container of General Purpose Fertilizer in your cart"
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "id": null,
+                "args": {
+                  "customer_id": "123"
+                },
+                "name": "access_cart_information"
+              }
+            ],
+            "tool_responses": [],
+            "intermediate_responses": []
+          },
+          "creation_timestamp": 1759303525.066445,
+          "rubrics": null,
+          "app_details": null
+        }
+      ],
+      "session_input": null,
+      "creation_timestamp": 1759303525.066454,
+      "rubrics": null
+    }
+  ],
+  "creation_timestamp": 1759303525.066466
+}
