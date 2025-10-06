@@ -103,6 +103,33 @@ ruff format app/ eval/ deploy/
 ruff check app/ eval/ deploy/ --fix
 ```
 
+### Running the MCP Server
+
+Start the FastMCP server to expose tools via the Model Context Protocol:
+
+```bash
+# Run the MCP server
+uv run python -m mcp_server.fast_mcp_server
+
+# Or activate the virtual environment first
+source .venv/bin/activate
+python -m mcp_server.fast_mcp_server
+```
+
+This exposes all customer service tools (check_product_list, get_product_recommendations, etc.) via MCP, making them available to any MCP-compatible client.
+
+**Available Tools:**
+- `check_product_list` - Get products by department
+- `get_product_recommendations` - Get personalized product recommendations
+- `check_product_availability` - Check stock availability
+- `access_cart_information` - Retrieve customer cart
+- `modify_cart` - Add/remove items from cart
+
+**Query Available Tools:**
+```bash
+python query_mcp_tools.py
+```
+
 ### Running the FastAPI Server
 
 Start the local development server:
