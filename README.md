@@ -125,10 +125,6 @@ This exposes all customer service tools (check_product_list, get_product_recomme
 - `access_cart_information` - Retrieve customer cart
 - `modify_cart` - Add/remove items from cart
 
-**Query Available Tools:**
-```bash
-python query_mcp_tools.py
-```
 
 ### Running the FastAPI Server
 
